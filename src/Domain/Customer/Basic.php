@@ -3,8 +3,10 @@
 namespace BookStore\Domain\Customer;
 
 use BookStore\Domain\Customer;
+use BookStore\Domain\Person;
 
-class Basic extends Customer
+// classes can only extend from other classes. The only way to mix them is when a class implements an interface
+class Basic extends Person implements Customer
 {
     public function getMonthlyFee(): float
     {
@@ -19,5 +21,13 @@ class Basic extends Customer
     public function getType(): string
     {
         return "Basic";
+    }
+    public function pay(float $amount)
+    {
+        echo "Paying $amount.";
+    }
+    public function isExtentOfTaxes(): bool
+    {
+        return false;
     }
 }
